@@ -1,7 +1,8 @@
 {
   "root": true,
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
+       "plugin:react/recommended"
   ],
   "globals": {
     "wp": true

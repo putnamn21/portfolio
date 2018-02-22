@@ -11,5 +11,17 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.react('resources/assets/js/app.js', 'public/js').extract(['react'])
+mix
+  .react('resources/assets/js/app.js', 'public/js')
+  .extract(['babel-polyfill','react'])
   .sass('resources/assets/sass/app.scss', 'public/css');
+
+
+if (mix.inProduction()) {
+  mix.version();
+}
+
+mix.browserSync({
+  proxy: 'https://laravel.test',
+  https: true
+});

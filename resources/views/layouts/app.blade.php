@@ -14,11 +14,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <main>
-            @yield('content')
-        </main>
-    </div>
+    <main>
+        @yield('content')
+    </main>
 
     <!-- Scripts -->
     <script src="{{ asset('js/manifest.js') }}"></script>
