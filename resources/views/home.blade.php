@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <div id="app">
+  <div class="header" id="webgl">
 
-    </div>
+  </div>
+  <div id="app">
+
+  </div>
 @endsection

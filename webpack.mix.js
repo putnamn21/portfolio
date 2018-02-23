@@ -1,5 +1,7 @@
 let mix = require('laravel-mix');
-
+let path = require('path');
+let config = require('./dev-server.config.json');
+//let webpack = require('webpack');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,8 +13,14 @@ let mix = require('laravel-mix');
  |
  */
 
-mix
-  .react('resources/assets/js/app.js', 'public/js')
+mix.webpackConfig({
+  resolve: {
+    alias: {
+      Styles : path.resolve(__dirname, './resources/assets/sass/abstracts'),
+      Images : path.resolve(__dirname, './resources/assets/images')
+    }
+  }
+}).react('resources/assets/js/app.js', 'public/js')
   .extract(['babel-polyfill','react'])
   .sass('resources/assets/sass/app.scss', 'public/css');
 
@@ -22,5 +30,7 @@ if (mix.inProduction()) {
 }
 
 mix.browserSync({
-  proxy: 'http://freelance.test'
+  proxy: config.proxy,
+  ghostMode: false,
+  open: false
 });

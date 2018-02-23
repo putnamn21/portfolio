@@ -2505,32 +2505,6 @@ template {
   }
 }
 
-/* Colors */
-
-/* Primary Colors Used */
-
-/* font colors */
-
-/* Screens */
-
-/*
-    ** Typography **
- */
-
-/* headings h1- h3 */
-
-/* headings h4 - h6 */
-
-/* normal */
-
-/* links */
-
-/* Transitions */
-
-/* Bootstrap Overrides */
-
-/* Z INDEXES */
-
 /**
  * @param {String} $childClass - Use the child class to target the child you want the grayscale to effect, but the hover action will still trigger on the base element. Used when you want the effect on something that is blocked by an overlay but you want the hover effect still
  */
@@ -2793,5 +2767,14 @@ a:hover {
 
 a:active {
   opacity: 0.5;
+}
+
+.header {
+  height: 100vh;
+  width: 100%;
+  background-color: #000000;
+  color: white;
+  padding: 1px;
+  overflow: hidden;
 }
 
