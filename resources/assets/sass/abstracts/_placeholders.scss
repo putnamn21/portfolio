@@ -1,0 +1,25 @@
+%disableLinkEffects {
+    &:active,
+    &:focus,
+    &:hover {
+        text-decoration: none;
+        color          : inherit;
+        opacity: 1;
+        outline: none;
+    }
+}
+%disableDefaultLink {
+  &:active,
+  &:focus,
+  &:hover,
+  &:visited {
+    opacity: 1;
+  }
+}
+%absoluteFull {
+    position: absolute;
+    top     : 0;
+    left    : 0;
+    height  : 100%;
+    width   : 100%;
+}

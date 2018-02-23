@@ -1,0 +1,252 @@
+/// Responsive breakpoint manager
+/// @access public
+/// @param {String} $breakpoint - Breakpoint
+/// @requires $breakpoints
+@mixin mq($breakpoint) {
+    $raw-query: map-get($breakpoints, $breakpoint);
+    @if $raw-query {
+        $query: if(type-of($raw-query) == 'string', unquote($raw-query), inspect($raw-query));
+        @media #{$query} {
+            @content;
+        }
+    } @else {
+        @error 'No value found for `#{$breakpoint}`. ' + 'Please make sure it is defined in `$breakpoints` map.';
+    }
+}
+/**
+ * @param {String} $childClass - Use the child class to target the child you want the grayscale to effect, but the hover action will still trigger on the base element. Used when you want the effect on something that is blocked by an overlay but you want the hover effect still
+ */
+@mixin grayscaleHoverEffect($childClass: false, $addlFilter: '') {
+    @if $childClass {
+        #{$childClass} {
+            filter: url( '../filters/grayscale.svg#filter' );
+            filter: grayscale(100%) contrast(0.4) #{$addlFilter};
+            transition: filter $t-l;
+        }
+        &:hover #{$childClass} {
+            filter: url( '../filters/disableGrayscale.svg#filter' );
+            filter: grayscale(0%) contrast(1);
+        }
+    } @else {
+        background-color: $c-secondary-light;
+        filter: url( '../filters/grayscale.svg#filter');
+        filter: grayscale(100%) contrast(0.4) #{$addlFilter};
+        transition      : filter $t-l;
+        &:hover {
+            filter: url( '../filters/disableGrayscale.svg#filter');
+            filter: grayscale(0%) contrast(1);
+        }
+    }
+}
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+    $padding: unquote(($y / $x) * 100 + '%');
+    @if $pseudo {
+        &:before {
+            display    : block;
+            content    : '';
+            height     : 0;
+            line-height: 0;
+            width      : 100%;
+            padding-top: $padding;
+        }
+    } @else {
+        height     : 0;
+        width      : 100%;
+        padding-top: $padding;
+    }
+}
+@mixin video($x, $y) {
+    @include responsive-ratio($x, $y);
+    iframe {
+        position: absolute;
+        height  : 100%;
+        width   : 100%;
+        top     : 0;
+        left    : 0;
+    }
+}
+@mixin button($color, $fontColor: false) {
+    @if $color == null {
+        @error 'You need to define a color for the effect – `#{$effect}`';
+    }
+    @if $fontColor == false {
+        @if lightness($color) > 50% {
+            color: $font-dark;
+        } @else {
+            color: $font-light;
+        }
+    } @else {
+        color: $fontColor !important;
+    }
+    display         : inline-block;
+    text-transform  : uppercase;
+    font-weight     : 700;
+    text-decoration : none;
+    transition      : $t-s;
+    background-color: $color;
+    padding         : 0.7em 1em 0.5em;
+    border          : 0 solid transparent;
+    box-shadow      : none;
+    border-radius   : 0;
+    font-size       : $button-font-size;
+    cursor          : pointer;
+    &:active,
+    &:focus,
+    &:hover,
+    &:visited {
+        opacity: 1;
+    }
+    &:focus,
+    &:hover {
+        @if $fontColor == false {
+            @if lightness($color) > 50% {
+                color: $font-dark;
+            } @else {
+                color: $font-light;
+            }
+        } @else {
+            color: $fontColor;
+        }
+        outline         : none;
+        text-decoration : none;
+        background-color: darken($color, 10%);
+    }
+    &:active {
+        @if $fontColor == false {
+            @if lightness($color) > 50% {
+                color: $font-dark;
+            } @else {
+                color: $font-light;
+            }
+        } @else {
+            color: $fontColor;
+        }
+        background-color: darken($color, 15%);
+    }
+}
+@mixin text-effect($effect, $color: null) {
+    text-decoration: none;
+    &:active,
+    &:focus,
+    &:hover {
+        text-decoration: none;
+    }
+    @if $effect == 'opacity' {
+        transition: opacity $t-s;
+        cursor    : pointer;
+        &:focus,
+        &:hover {
+            opacity: 0.5;
+        }
+        &:active {
+            opacity: 0.4;
+        }
+    } @else if $effect == 'background-color' and $color != null {
+        @if $color == null {
+            @error 'You need to define a color for the effect – `#{$effect}`';
+        } @else {
+            transition      : background-color $t-s;
+            background-color: $color;
+            &:active,
+            &:focus,
+            &:hover {
+                cursor          : pointer;
+                background-color: darken($color, 10%);
+            }
+        }
+    } @else if $effect == 'hover-border-bottom' or $effect == 'border-bottom' {
+        @if $color == null {
+            @error 'You need to define a color for the effect – `#{$effect}`';
+        } @else {
+            position: relative;
+            color   : $color;
+            &:before {
+                content         : '';
+                position        : absolute;
+                top             : 100%;
+                left            : 0;
+                height          : 0.2em;
+                background-color: $color;
+                transition      : width $t-s;
+                @if $effect == 'hover-border-bottom' {
+                    width: 0;
+                } @else {
+                    width: 1.5em;
+                }
+            }
+            @if $effect == 'hover-border-bottom' {
+                cursor: pointer;
+                &:active,
+                &:hover,
+                &:visited {
+                    color: $color;
+                }
+                &:hover:before {
+                    width: 1.5em;
+                }
+            }
+        }
+    } @else {
+        @error 'Text hover effect `#{$effect}` not found.';
+    }
+}
+@mixin clearfix {
+    &:after {
+        display: table;
+        content: '';
+        clear  : both;
+    }
+}
+@mixin loadingSpinner($color, $zIndex: $loadingScreenZIndex) {
+    height            : 5rem;
+    width             : 5rem;
+    border-radius     : 100%;
+    position          : absolute;
+    z-index           : $zIndex;
+    top               : 50%;
+    left              : 50%;
+    border            : 0.5rem solid $color;
+    border-right-color: transparent;
+    border-left-color : transparent;
+    animation         : loadingSpinner 0.75s ease-in-out infinite;
+}
+@mixin css-triangle($color, $direction, $size: 6px, $position: absolute, $round: false) {
+    @include pseudo($pos: $position);
+    width : 0;
+    height: 0;
+    @if $round {
+        border-radius: 3px;
+    }
+    @if $direction == down {
+        border-left : $size solid transparent;
+        border-right: $size solid transparent;
+        border-top  : $size solid $color;
+        margin-top  : 0 - round($size / 2.5);
+    } @else if $direction == up {
+        border-left  : $size solid transparent;
+        border-right : $size solid transparent;
+        border-bottom: $size solid $color;
+        margin-bottom: 0 - round($size / 2.5);
+    } @else if $direction == right {
+        border-top   : $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-left  : $size solid $color;
+        margin-right : -$size;
+    } @else if $direction == left {
+        border-top   : $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-right : $size solid $color;
+        margin-left  : -$size;
+    }
+}
+@mixin fadeInFromHidden($length: $t-s, $delay: 0s) {
+    animation: fadeInFromHidden $length ease-in $delay forwards;
+}
+@mixin slideDown() {
+    z-index  : 0;
+    animation: slideDown $t-s ease-out 0s forwards;
+}
+@mixin slideUp() {
+    z-index  : 0;
+    animation: slideUp $t-s ease-out 0s forwards;
+}

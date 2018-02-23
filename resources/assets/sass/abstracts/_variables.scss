@@ -1,0 +1,77 @@
+/* Colors */
+$grayscale30: rgb(188, 190, 192);
+$grayscale40: rgb(167, 169, 172);
+$grayscale50: rgb(147, 149, 152);
+$grayscale60: rgb(128, 130, 133);
+$grayscale70: rgb(109, 110, 113);
+$grayscale80: rgb(88, 89, 91);
+$grayscale90: rgb(65, 64, 66);
+$grayscale100: rgb(35, 31, 32);
+/* Primary Colors Used */
+$c-primary: rgb(50, 47, 48);
+$c-secondary: #8DAABA;
+$c-secondary-lighter: #c4c2ec;
+$c-secondary-lightest: #bae1f2;
+$c-accent: #F74356;
+$c-light: rgb(255, 255, 255);
+/* font colors */
+$font-dark: $c-primary;
+$font-light: $c-light;
+
+/* Screens */
+$screen-sizes: ( 'xs' : 400px, 'sm' : 576px, 'md' : 768px, 'lg' : 992px, 'xl' : 1200px, 'xxl' : 1600px );
+$breakpoints: ();
+@each $key, $value in $screen-sizes {
+    $screen     : screen($key);
+    $breakpoints: map-merge($breakpoints, ('below-#{$key}': (max-width: $screen) ) );
+    $breakpoints: map-merge($breakpoints, ('above-#{$key}': (min-width: $screen) ) );
+    $breakpoints: map-merge($breakpoints, ('below-#{$key}-max': (max-width: $screen - 1) ) );
+    $breakpoints: map-merge($breakpoints, ('above-#{$key}-max': (min-width: $screen + 1) ) );
+}
+/*
+    ** Typography **
+ */
+$fs-base: 14px;
+$fs-sm: 16px;
+$fs-md: 18px;
+$fs-lg: 19px;
+$fs-xl: 19px;
+$primary-font: 'Nanum Gothic', sans-serif;
+$font-size-h1: 2rem;
+$font-size-h2: 1.75rem;
+$font-size-h3: 1.5rem;
+$font-size-h4: 1.25rem;
+$font-size-h5: 1rem;
+$font-size-h6: 0.8rem;
+/* headings h1- h3 */
+$heading-font-family: 'Nanum Gothic', sans-serif;;
+$heading-font-weight: normal;
+$heading-line-height: 1em;
+$heading-margin-top: 1.25em;
+$heading-margin-bottom: 0.5em;
+/* headings h4 - h6 */
+$subhead-font-family: $primary-font;
+$subhead-font-weight: normal;
+$subhead-line-height: 1em;
+$subhead-margin-top: 1em;
+$subhead-margin-bottom: 0.5em;
+/* normal */
+$paragraph-font-family: $primary-font;
+$paragraph-font-weight: normal;
+$paragraph-line-height: 1.3em;
+$paragraph-margin-top: 1em;
+$paragraph-margin-bottom: 1em;
+/* links */
+$link-color: $font-light;
+$link-hover-color: $c-accent;
+$link-decoration: none;
+$link-hover-decoration: none;
+/* Transitions */
+$t-s: 0.15s;
+$t-l: 0.5s;
+/* Bootstrap Overrides */
+$link-color: inherit;
+$enable-flex: true;
+$main-sm-columns: 12;
+$sidebar-sm-columns: 4;
+/* Z INDEXES */
