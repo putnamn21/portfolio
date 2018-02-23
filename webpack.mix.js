@@ -22,6 +22,5 @@ if (mix.inProduction()) {
 }
 
 mix.browserSync({
-  proxy: 'https://laravel.test',
-  https: true
+  proxy: 'http://freelance.test'
 });
