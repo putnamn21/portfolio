@@ -1,79 +1,96 @@
 import * as THREE from 'three';
 import mapImage from '../../../images/earth.jpg';
 
+const htmlContainer = document.getElementById('webgl');
+
+
+// earthAxis       : (new THREE.Vector3(Math.sin( this.earthTilt ), Math.cos( this.earthTilt ), 0)).normalize(),
+
+
+
 
 export default (function(){
+
+  const CFG = {
+    mapImage        : mapImage,
+    screenHeight    : htmlContainer.offsetHeight,
+    screenWidth     : htmlContainer.offsetWidth,
+    screenBckgrndClr: 0x000000,
+    pixelRatio      : window.devicePixelRatio || 1,
+    view_angle      : 55,
+    view_near       : 0.1,
+    view_far        : 20000,
+    view_initialpos : [-300, 250, 1500],
+    earthTilt       : Math.PI * 23 / 180,
+    earth : {
+      radius   : 200,
+      segments : 50
+    }
+  };
+  console.log(CFG);
   /**
   * SET THE SIZE FOR THE RENDERER
   */
-  const htmlContainer = document.getElementById('webgl');
   const renderer = new THREE.WebGLRenderer();
-  const WIDTH = htmlContainer.offsetWidth;
-  const HEIGHT = htmlContainer.offsetHeight;
-  const earthTiltRadians = Math.PI * 23 / 180;
-  const earthAxis = new THREE.Vector3(Math.sin(  earthTiltRadians ), Math.cos(  earthTiltRadians ), 0);
-  earthAxis.normalize();
+  renderer.setSize(CFG.screenWidth, CFG.screenHeight);
+  renderer.setPixelRatio(CFG.pixelRatio);
 
-  renderer.setSize(WIDTH, HEIGHT);
-  renderer.setPixelRatio(window.devicePixelRatio);
   /*
   * SET THE VIEW CAMERA
   */
-  const VIEW_ANGLE = 45;
-  const ASPECT = WIDTH / HEIGHT;
-  const NEAR = 0.1;
-  const FAR = 20000;
-  const camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
-  camera.position.set( -300, 250, 1500 );
-  camera.rotation.set(0, 0,  Math.PI * 23 / 180);
+  const camera = new THREE.PerspectiveCamera(
+    CFG.view_angle,
+    ( CFG.screenWidth / CFG.screenHeight ),
+    CFG.view_near,
+    CFG.view_far
+  );
+  camera.position.set(...CFG.view_initialpos);
+  camera.rotation.set(0, 0,  CFG.earthTilt);
 
   /*
   * SET THE SCENE
   */
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x000000);
+  scene.background = new THREE.Color(CFG.screenBckgrndClr);
   scene.add(camera);
 
   htmlContainer.appendChild(renderer.domElement);
 
-  const RADIUS = 200,
-    SEGMENTS = 50,
-    RINGS = 50,
+  const
     globe = new THREE.Group();
 
   scene.add(globe);
 
 
   let loader = new THREE.TextureLoader();
-  let mesh;
+  let earth;
   let mesh2;
 
-  loader.load( mapImage , function(texture){
+  loader.load( CFG.mapImage , function(texture){
 
-    let sphere = new THREE.SphereGeometry(RADIUS, SEGMENTS, RINGS);
+    let sphere = new THREE.SphereGeometry(CFG.earth.radius, CFG.earth.segments, CFG.earth.segments);
     let material = new THREE.MeshBasicMaterial( {map: texture, overdraw: 0.7 } );
 
-    let sphere2 = new THREE.SphereGeometry(RADIUS*1.1, SEGMENTS, RINGS);
+    let sphere2 = new THREE.SphereGeometry(CFG.earth.radius *1.1, CFG.earth.segments, CFG.earth.segments);
     let material2 = new THREE.MeshBasicMaterial( {color: 0x2980b9, wireframe: true} );
     let mesh2Size = 1;
 
-    mesh = new THREE.Mesh(sphere, material);
+    earth = new THREE.Mesh(sphere, material);
     mesh2 = new THREE.Mesh(sphere2, material2);
 
     //mesh2.rotation.set( 0, 0,  Math.PI * 23 / 180 ); // this plus mesh uncommented plus globe rotate works.
     //mesh.rotation.set( 0, 0,  Math.PI * 23 / 180 ); // tilt
     //globe.rotation.set( 0,0, - Math.PI * 23 / 180  );
-    globe.add(mesh);
+    globe.add(earth);
     globe.add(mesh2);
     globe.position.z = -1000;
     //let speed = 10;
     //let breakingPercentage = .007 * (speed / 10);
     let count = 0;
 
-    var r = RADIUS / 3959 * 22236;
+    var r = CFG.earth.radius / 3959 * 22236;
 
     var theta = 0;
-    var dTheta = 2 * Math.PI / 1000;
     const size = 2;
     let marker = new THREE.SphereGeometry(size, 2, 2);
     let pointColor = new THREE.MeshBasicMaterial({color: 'rgb(155,155,155)'});
@@ -82,7 +99,7 @@ export default (function(){
     function update () {
       //globe.rotation.y -= 0.01;
       //globe.rotateOnAxis( earthAxis, -.01 );
-      mesh.rotation.y -= 0.005;
+      earth.rotation.y -= 0.005;
       mesh2.scale.x  = mesh2Size,
       mesh2.scale.y  = mesh2Size;
       mesh2.scale.z = mesh2Size;

@@ -1954,80 +1954,92 @@ module.exports = function spread(callback) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three__ = __webpack_require__(163);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__images_earth_jpg__ = __webpack_require__(164);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__images_earth_jpg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__images_earth_jpg__);
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
+
+
+
+var htmlContainer = document.getElementById('webgl');
+
+// earthAxis       : (new THREE.Vector3(Math.sin( this.earthTilt ), Math.cos( this.earthTilt ), 0)).normalize(),
 
 
 /* unused harmony default export */ var _unused_webpack_default_export = ((function () {
+  var _camera$position;
+
+  var CFG = {
+    mapImage: __WEBPACK_IMPORTED_MODULE_1__images_earth_jpg___default.a,
+    screenHeight: htmlContainer.offsetHeight,
+    screenWidth: htmlContainer.offsetWidth,
+    screenBckgrndClr: 0x000000,
+    pixelRatio: window.devicePixelRatio || 1,
+    view_angle: 55,
+    view_near: 0.1,
+    view_far: 20000,
+    view_initialpos: [-300, 250, 1500],
+    earthTilt: Math.PI * 23 / 180,
+    earth: {
+      radius: 200,
+      segments: 50
+    }
+  };
+  console.log(CFG);
   /**
   * SET THE SIZE FOR THE RENDERER
   */
-  var htmlContainer = document.getElementById('webgl');
-  var renderer = new __WEBPACK_IMPORTED_MODULE_0_three__["j" /* WebGLRenderer */]();
-  var WIDTH = htmlContainer.offsetWidth;
-  var HEIGHT = htmlContainer.offsetHeight;
-  var earthTiltRadians = Math.PI * 23 / 180;
-  var earthAxis = new __WEBPACK_IMPORTED_MODULE_0_three__["i" /* Vector3 */](Math.sin(earthTiltRadians), Math.cos(earthTiltRadians), 0);
-  earthAxis.normalize();
+  var renderer = new __WEBPACK_IMPORTED_MODULE_0_three__["i" /* WebGLRenderer */]();
+  renderer.setSize(CFG.screenWidth, CFG.screenHeight);
+  renderer.setPixelRatio(CFG.pixelRatio);
 
-  renderer.setSize(WIDTH, HEIGHT);
-  renderer.setPixelRatio(window.devicePixelRatio);
   /*
   * SET THE VIEW CAMERA
   */
-  var VIEW_ANGLE = 45;
-  var ASPECT = WIDTH / HEIGHT;
-  var NEAR = 0.1;
-  var FAR = 20000;
-  var camera = new __WEBPACK_IMPORTED_MODULE_0_three__["e" /* PerspectiveCamera */](VIEW_ANGLE, ASPECT, NEAR, FAR);
-  camera.position.set(-300, 250, 1500);
-  camera.rotation.set(0, 0, Math.PI * 23 / 180);
+  var camera = new __WEBPACK_IMPORTED_MODULE_0_three__["e" /* PerspectiveCamera */](CFG.view_angle, CFG.screenWidth / CFG.screenHeight, CFG.view_near, CFG.view_far);
+  (_camera$position = camera.position).set.apply(_camera$position, _toConsumableArray(CFG.view_initialpos));
+  camera.rotation.set(0, 0, CFG.earthTilt);
 
   /*
   * SET THE SCENE
   */
   var scene = new __WEBPACK_IMPORTED_MODULE_0_three__["f" /* Scene */]();
-  scene.background = new __WEBPACK_IMPORTED_MODULE_0_three__["a" /* Color */](0x000000);
+  scene.background = new __WEBPACK_IMPORTED_MODULE_0_three__["a" /* Color */](CFG.screenBckgrndClr);
   scene.add(camera);
 
   htmlContainer.appendChild(renderer.domElement);
 
-  var RADIUS = 200,
-      SEGMENTS = 50,
-      RINGS = 50,
-      globe = new __WEBPACK_IMPORTED_MODULE_0_three__["b" /* Group */]();
+  var globe = new __WEBPACK_IMPORTED_MODULE_0_three__["b" /* Group */]();
 
   scene.add(globe);
 
   var loader = new __WEBPACK_IMPORTED_MODULE_0_three__["h" /* TextureLoader */]();
-  var mesh = void 0;
+  var earth = void 0;
   var mesh2 = void 0;
 
-  loader.load(__WEBPACK_IMPORTED_MODULE_1__images_earth_jpg___default.a, function (texture) {
+  loader.load(CFG.mapImage, function (texture) {
 
-    var sphere = new __WEBPACK_IMPORTED_MODULE_0_three__["g" /* SphereGeometry */](RADIUS, SEGMENTS, RINGS);
+    var sphere = new __WEBPACK_IMPORTED_MODULE_0_three__["g" /* SphereGeometry */](CFG.earth.radius, CFG.earth.segments, CFG.earth.segments);
     var material = new __WEBPACK_IMPORTED_MODULE_0_three__["d" /* MeshBasicMaterial */]({ map: texture, overdraw: 0.7 });
 
-    var sphere2 = new __WEBPACK_IMPORTED_MODULE_0_three__["g" /* SphereGeometry */](RADIUS * 1.1, SEGMENTS, RINGS);
+    var sphere2 = new __WEBPACK_IMPORTED_MODULE_0_three__["g" /* SphereGeometry */](CFG.earth.radius * 1.1, CFG.earth.segments, CFG.earth.segments);
     var material2 = new __WEBPACK_IMPORTED_MODULE_0_three__["d" /* MeshBasicMaterial */]({ color: 0x2980b9, wireframe: true });
     var mesh2Size = 1;
 
-    mesh = new __WEBPACK_IMPORTED_MODULE_0_three__["c" /* Mesh */](sphere, material);
+    earth = new __WEBPACK_IMPORTED_MODULE_0_three__["c" /* Mesh */](sphere, material);
     mesh2 = new __WEBPACK_IMPORTED_MODULE_0_three__["c" /* Mesh */](sphere2, material2);
 
     //mesh2.rotation.set( 0, 0,  Math.PI * 23 / 180 ); // this plus mesh uncommented plus globe rotate works.
     //mesh.rotation.set( 0, 0,  Math.PI * 23 / 180 ); // tilt
     //globe.rotation.set( 0,0, - Math.PI * 23 / 180  );
-    globe.add(mesh);
+    globe.add(earth);
     globe.add(mesh2);
     globe.position.z = -1000;
     //let speed = 10;
     //let breakingPercentage = .007 * (speed / 10);
     var count = 0;
 
-    var r = RADIUS / 3959 * 22236;
+    var r = CFG.earth.radius / 3959 * 22236;
 
     var theta = 0;
-    var dTheta = 2 * Math.PI / 1000;
     var size = 2;
     var marker = new __WEBPACK_IMPORTED_MODULE_0_three__["g" /* SphereGeometry */](size, 2, 2);
     var pointColor = new __WEBPACK_IMPORTED_MODULE_0_three__["d" /* MeshBasicMaterial */]({ color: 'rgb(155,155,155)' });
@@ -2036,7 +2048,7 @@ module.exports = function spread(callback) {
     function update() {
       //globe.rotation.y -= 0.01;
       //globe.rotateOnAxis( earthAxis, -.01 );
-      mesh.rotation.y -= 0.005;
+      earth.rotation.y -= 0.005;
       mesh2.scale.x = mesh2Size, mesh2.scale.y = mesh2Size;
       mesh2.scale.z = mesh2Size;
       if (mesh2Size < 2) {
@@ -2066,7 +2078,7 @@ module.exports = function spread(callback) {
 "use strict";
 /* unused harmony export WebGLRenderTargetCube */
 /* unused harmony export WebGLRenderTarget */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return WebGLRenderer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return WebGLRenderer; });
 /* unused harmony export ShaderLib */
 /* unused harmony export UniformsLib */
 /* unused harmony export UniformsUtils */
@@ -2178,7 +2190,7 @@ module.exports = function spread(callback) {
 /* unused harmony export Line3 */
 /* unused harmony export Euler */
 /* unused harmony export Vector4 */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return Vector3; });
+/* unused harmony export Vector3 */
 /* unused harmony export Vector2 */
 /* unused harmony export Quaternion */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Color; });
