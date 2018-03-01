@@ -80,9 +80,9 @@ export default (function(){
     (function update () {
       earth.rotation.y -= 0.0025;
       let step = count * -.01;
-      sat3.position.y = (CFG.earth.radius * 1.2 / 2) * Math.cos(step * 1.2);
+      sat3.position.y = (CFG.earth.radius * 2 / 2) * Math.cos(step * 12);
       sat2.position.y = (CFG.earth.radius * 1.2 / 2) * Math.sin(step);
-      rotateAroundCenter(sat3, (CFG.earth.radius * 1.2), step * 1.2);
+      rotateAroundCenter(sat3, (CFG.earth.radius * 1.2), step * 12);
       rotateAroundCenter(sat2, (CFG.earth.radius * 1.2), -step );
 
       rotateAroundCenter(satellite, CFG.earth.radius * 2, step);

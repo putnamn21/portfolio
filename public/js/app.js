@@ -1584,9 +1584,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     (function update() {
       earth.rotation.y -= 0.0025;
       var step = count * -.01;
-      sat3.position.y = CFG.earth.radius * 1.2 / 2 * Math.cos(step * 1.2);
+      sat3.position.y = CFG.earth.radius * 2 / 2 * Math.cos(step * 12);
       sat2.position.y = CFG.earth.radius * 1.2 / 2 * Math.sin(step);
-      Object(__WEBPACK_IMPORTED_MODULE_2__utils_js__["c" /* rotateAroundCenter */])(sat3, CFG.earth.radius * 1.2, step * 1.2);
+      Object(__WEBPACK_IMPORTED_MODULE_2__utils_js__["c" /* rotateAroundCenter */])(sat3, CFG.earth.radius * 1.2, step * 12);
       Object(__WEBPACK_IMPORTED_MODULE_2__utils_js__["c" /* rotateAroundCenter */])(sat2, CFG.earth.radius * 1.2, -step);
 
       Object(__WEBPACK_IMPORTED_MODULE_2__utils_js__["c" /* rotateAroundCenter */])(satellite, CFG.earth.radius * 2, step);
