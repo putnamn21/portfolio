@@ -38,3 +38,68 @@ export const addEarth = (group, cfg) => {
     });
   });
 };
+
+export class Planet {
+  constructor(group, cfg){
+    const {radius, segments, scale} = cfg;
+    this.needsUpdate = {}; //callback functions
+    this.material = new THREE.MeshBasicMaterial(cfg.material);
+    this.geometry = new THREE.SphereGeometry(radius, segments, segments);
+
+    this.mesh = new THREE.Mesh(this.geometry, this.material);
+    this.mesh.scale.set(scale, scale, scale);
+    this.mesh.name = 'earth';
+    group.add(this.mesh);
+  }
+
+  rotate(step){
+    this.mesh.rotation.y -= step;
+  }
+
+  rotateAroundCenter(r, speed, step) {
+    this.mesh.position.x = r * Math.cos(step * speed);
+    this.mesh.position.z = r * Math.sin(step * speed);
+  }
+
+  grow(step){
+    this.mesh.scale.x += step;
+    this.mesh.scale.y += step;
+    this.mesh.scale.z += step;
+  }
+
+  addTexture(image){
+    this.texture = new THREE.TextureLoader().load(image);
+    this.material.setValues({
+      map: this.texture,
+      wireframe: false
+    });
+    this.material.needsUpdate = true;
+  }
+  /**
+   * [addUpdateHandler description]
+   * @param {Function} callback   function to be called
+   * @param {array}   args       deconstructed as callback args
+   * @param {number}   [length=0] how long to run it for, -1 = infinity
+   */
+  addUpdateHandler(callback, args, length = 0){
+
+    const index = Object.keys(this.needsUpdate).length + 1; //add it as unique to needsUpdate
+
+    let step = 0;
+    callback = callback.bind(this);
+
+    this.needsUpdate[index] = function(){
+      callback(...args, step);
+      step++;
+      if (step === length) delete this.needsUpdate[index];
+    };
+    this.needsUpdate[index] = this.needsUpdate[index].bind(this);
+
+  }
+
+  update(){
+    Object.values(this.needsUpdate).forEach(callback => {
+      callback();
+    });
+  }
+}
