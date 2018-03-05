@@ -1,5 +1,17 @@
 import * as THREE from 'three';
 
+
+export function rand(min, max){
+  return Math.random() * (max - min) + min;
+}
+
+export function degToRad(deg){
+  return deg * Math.PI / 180;
+}
+
+export function radToDeg(rad){
+  return rad * 180 / Math.PI;
+}
 /**
  * Returns a little marke
  * @param {THREE.Group} group    Group to add the satellite to
@@ -40,7 +52,11 @@ export const addEarth = (group, cfg) => {
 };
 
 export class Planet {
-  constructor(group, cfg){
+  /**
+   * @param {object} cfg  configurations for radius, segments, scale, material
+   * @param {THREE.Group} group optionally add it to the group at instantiation.
+   */
+  constructor(cfg, group){
     const {radius, segments, scale} = cfg;
     this.needsUpdate = {}; //callback functions
     this.material = new THREE.MeshBasicMaterial(cfg.material);
@@ -49,16 +65,20 @@ export class Planet {
     this.mesh = new THREE.Mesh(this.geometry, this.material);
     this.mesh.scale.set(scale, scale, scale);
     this.mesh.name = 'earth';
-    group.add(this.mesh);
+    group && group.add(this.mesh);
   }
 
   rotate(step){
     this.mesh.rotation.y -= step;
   }
 
-  rotateAroundCenter(r, speed, step) {
-    this.mesh.position.x = r * Math.cos(step * speed);
-    this.mesh.position.z = r * Math.sin(step * speed);
+  rotateAroundCenter(r, speed, tilt = 0, step) {
+
+    let yRadius = r * tilt;
+    let xRadius = Math.sqrt( Math.pow(r, 2) - Math.pow(yRadius, 2) );
+    this.mesh.position.y = yRadius * Math.cos(step * speed + 5);
+    this.mesh.position.x = xRadius * Math.cos(step * speed + 5);
+    this.mesh.position.z = r * Math.sin(step * speed  + 5);
   }
 
   grow(step){

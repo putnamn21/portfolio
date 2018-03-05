@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import mapImage from '../../../images/earth-2.jpg';
-import {Planet} from './utils.js';
+import {Planet, degToRad, rand} from './utils.js';
+
 
 
 // earthAxis       : (new THREE.Vector3(Math.sin( this.earthTilt ), Math.cos( this.earthTilt ), 0)).normalize(),
@@ -15,7 +16,7 @@ export default (function(){
   const CFG = {
     sh    : htmlContainer.offsetHeight,
     sw     : htmlContainer.offsetWidth,
-    screenBckgrndClr: 'rgb(25,25,35)',
+    screenBckgrndClr: 'rgb(85,85,105)',
     pixelRatio      : window.devicePixelRatio || 1,
     camera : {
       view_angle      : 20,
@@ -78,46 +79,47 @@ export default (function(){
    *  MAKE THE PLANETS
    */
 
-  const Earth = new Planet(group, {
+  const Earth = new Planet({
     radius: CFG.earth.radius,
     segments: CFG.earth.segments,
     scale: CFG.earth.sScale,
     material: {
       color: 'rgb(150,150,150)', wireframe: true
     }
-  });
+  }, group);
+  let satellites = [];
+  for (var i = 0; i < 100; i++){
+    satellites.push(new Planet({
+      radius: 1,
+      segments: 2,
+      scale: 1,
+      material: {
+        color: 0xffffff
+      }
+    }, group));
+  }
 
-  const sat = new Planet(group, {
-    radius: 2,
-    segments: 2,
-    scale: 1,
-    material: {
-      color: 0xFFFFFF
-    }
-  });
-
-  console.log(Earth);
   let count = 0;
 
   (function update(){
-
+    group.rotation.y -= CFG.earthRotation * 1.5; // earth rotation...
+    satellites.forEach((child) => {child.update()});
     Earth.update();
-    sat.update();
 
-    if( count == 15 ){
+    switch(count){
+    case 15:
       Earth.addUpdateHandler(Earth.grow, [.5/50], 50);
-    }
-    if( count === 15 + 50 ){
-      Earth.addUpdateHandler(Earth.rotate, [CFG.earthRotation], -1);
-    }
-    if( count === 200 ){
+      satellites.forEach((child) => child.addUpdateHandler(child.rotateAroundCenter, [
+        CFG.earth.radius * 1.05,
+        1 / 30 * rand(.5, 2) * (Math.random() >= 0.5 ? 1 : -1),
+        rand(0,1) * (Math.random() >= 0.5 ? 1 : -1)
+      ], -1));
+      break;
+    case 200:
       Earth.addTexture(CFG.earth.mapImage);
-    }
-    if( count === 300 ){
-      sat.addUpdateHandler(sat.rotateAroundCenter, [
-        CFG.earth.radius * 2,
-        1 / 50
-      ], -1);
+      break;
+    case 300:
+      break;
     }
 
     renderer.render(scene, camera);
