@@ -1,7 +1,7 @@
-import * as THREE from 'three';
-import mapImage from '../../../images/earth-2.jpg';
-import {Planet, degToRad, rand} from './utils.js';
-
+import * as THREE from 'three'
+import mapImage from '../../../images/earth-2.jpg'
+import {degToRad, rand, rN} from './utils.js'
+import Planet from './Planet.js'
 
 
 // earthAxis       : (new THREE.Vector3(Math.sin( this.earthTilt ), Math.cos( this.earthTilt ), 0)).normalize(),
@@ -11,12 +11,12 @@ import {Planet, degToRad, rand} from './utils.js';
 
 export default (function(){
 
-  const htmlContainer = document.getElementById('webgl');
+  const htmlContainer = document.getElementById('webgl')
 
   const CFG = {
-    sh    : htmlContainer.offsetHeight,
-    sw     : htmlContainer.offsetWidth,
-    screenBckgrndClr: 'rgb(85,85,105)',
+    sh : htmlContainer.offsetHeight,
+    sw : htmlContainer.offsetWidth,
+    screenBckgrndClr: 'rgb(25,25,25)',
     pixelRatio      : window.devicePixelRatio || 1,
     camera : {
       view_angle      : 20,
@@ -27,19 +27,19 @@ export default (function(){
     view_initialpos : [-300, 250, 4000],
     earthTilt       : Math.PI * 23 / 180,
     earth : {
-      mapImage        : mapImage,
+      mapImage : mapImage,
       radius   : 200,
       segments : 50,
-      sScale: 0.5
+      sScale   : 0.5
     },
-    earthRotation: 1 / 500
-  };
-  const renderer = new THREE.WebGLRenderer();
+    earthRotation: (2 * Math.PI) / 2000
+  }
+  const renderer = new THREE.WebGLRenderer()
   const camera = new THREE.PerspectiveCamera(
     ...Object.values(CFG.camera)
-  );
-  const scene = new THREE.Scene();
-  const group = new THREE.Group();
+  )
+  const scene = new THREE.Scene()
+  const group = new THREE.Group()
 
   /*
    ***** INITIALIZATION *****
@@ -47,29 +47,29 @@ export default (function(){
 
 
   // SET THE SIZE FOR THE RENDERER
-  renderer.setSize(CFG.sw, CFG.sh);
-  renderer.setPixelRatio(CFG.pixelRatio);
+  renderer.setSize(CFG.sw, CFG.sh)
+  renderer.setPixelRatio(CFG.pixelRatio)
 
   // SET THE VIEW CAMERA
-  camera.position.set(...CFG.view_initialpos);
-  camera.rotation.set(0, 0,  CFG.earthTilt);
+  camera.position.set(...CFG.view_initialpos)
+  camera.rotation.set(0, 0,  CFG.earthTilt)
 
   // SET THE SCENE
-  scene.background = new THREE.Color(CFG.screenBckgrndClr);
-  scene.add(camera);
-  scene.add(group);
+  scene.background = new THREE.Color(CFG.screenBckgrndClr)
+  scene.add(camera)
+  scene.add(group)
 
   // Add it to the DOM
-  htmlContainer.appendChild(renderer.domElement);
+  htmlContainer.appendChild(renderer.domElement)
 
   //resize if screen changes
   window.addEventListener('resize', function() {
     let WIDTH = htmlContainer.offsetWidth,
-      HEIGHT = htmlContainer.offsetHeight;
-    renderer.setSize(WIDTH, HEIGHT);
-    camera.aspect = WIDTH / HEIGHT;
-    camera.updateProjectionMatrix();
-  });
+      HEIGHT = htmlContainer.offsetHeight
+    renderer.setSize(WIDTH, HEIGHT)
+    camera.aspect = WIDTH / HEIGHT
+    camera.updateProjectionMatrix()
+  })
   /*
    ***** END INITIALIZATION ******
    */
@@ -86,73 +86,55 @@ export default (function(){
     material: {
       color: 'rgb(150,150,150)', wireframe: true
     }
-  }, group);
-  let satellites = [];
-  for (var i = 0; i < 100; i++){
+  }, group)
+  let satellites = []
+  for (var i = 0; i < 1000; i++){
     satellites.push(new Planet({
       radius: 1,
       segments: 2,
       scale: 1,
+      opacityLength: rand(.01, .003),
       material: {
-        color: 0xffffff
+        color: 0xffffff,
+        transparent: true,
+        opacity: 1
       }
-    }, group));
+    }, group))
   }
 
   let count = 0;
 
   (function update(){
-    group.rotation.y -= CFG.earthRotation * 1.5; // earth rotation...
-    satellites.forEach((child) => {child.update()});
-    Earth.update();
+    group.rotation.y -= CFG.earthRotation // earth rotation...
+    Earth.update()
+    satellites.forEach((child) => {child.update()})
 
     switch(count){
     case 15:
-      Earth.addUpdateHandler(Earth.grow, [.5/50], 50);
-      satellites.forEach((child) => child.addUpdateHandler(child.rotateAroundCenter, [
-        CFG.earth.radius * 1.05,
-        1 / 30 * rand(.5, 2) * (Math.random() >= 0.5 ? 1 : -1),
-        rand(0,1) * (Math.random() >= 0.5 ? 1 : -1)
-      ], -1));
-      break;
+      Earth.addUpdateHandler(Earth.grow, [.5/50], 50)
+      satellites.forEach((child) => {
+        child.pivotPoint.rotation.x = (rand(degToRad(-360), degToRad(360)))
+        child.pivotPoint.rotation.y = (rand(degToRad(-360), degToRad(360)))
+        child.pivotPoint.rotation.z = (rand(degToRad(-360), degToRad(360)))
+        child.addUpdateHandler(child.rotateAroundCenter, [
+          CFG.earth.radius * 1.02,
+          rand(.01, .015) * rN(),
+          rand(0, (2 * Math.PI))
+        ], -1)
+      })
+      break
     case 200:
-      Earth.addTexture(CFG.earth.mapImage);
-      break;
+      Earth.addTexture(CFG.earth.mapImage)
+      break
     case 300:
-      break;
+      break
     }
 
-    renderer.render(scene, camera);
-    requestAnimationFrame(update);
-    count ++;
-  })();
-
-  // addEarth(group, CFG).then((earth) => {
-  //
-  //   const satellite = addSat(group, 3, CFG.earth.radius * 2);
-  //   const sat2 = addSat(group, 2, CFG.earth.radius * 1.2);
-  //   const sat3 = addSat(group, 2, CFG.earth.radius * 1.2);
-  //
-  //   let count = 0;
-  //
-  //   (function update () {
-  //     earth.rotation.y -= 0.0025;
-  //     let step = count * -.01;
-  //     sat3.position.y = (CFG.earth.radius * 2 / 2) * Math.cos(step * 12);
-  //     sat2.position.y = (CFG.earth.radius * 1.2 / 2) * Math.sin(step);
-  //     rotateAroundCenter(sat3, (CFG.earth.radius * 1.2), step * 12);
-  //     rotateAroundCenter(sat2, (CFG.earth.radius * 1.2), -step );
-  //
-  //     rotateAroundCenter(satellite, CFG.earth.radius * 2, step);
-  //     count ++;
-  //     renderer.render(scene, camera);
-  //     requestAnimationFrame(update);
-  //   })();
-  // });
-
-  /*
-   * END MAKE THE PLANETS
-   */
+    renderer.render(scene, camera)
+    requestAnimationFrame(update)
+    count ++
+  })()
 
 
-})();
+
+})()

@@ -58,9 +58,8 @@
           "single"
       ],
       "semi": [
-          1,
-          "always",
-          {"omitLastInOneLineBlock": true}
+          2,
+          "never"
       ]
   }
 }
