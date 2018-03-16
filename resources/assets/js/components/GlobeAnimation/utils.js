@@ -1,3 +1,5 @@
+import * as THREE from 'three'
+
 export function rand(min, max){
   return Math.random() * (max - min) + min
 }
@@ -31,4 +33,22 @@ export function pAtPosInRange(min, max, pos){
 }
 export function rN(){
   return Math.random() > 0.5 ? -1 : 1
+}
+/**
+ * [latLongToVector3 description]
+ * @param  {Number} lat
+ * @param  {Number} lon
+ * @param  {Number} radius Earth Radius
+ * @param  {Number} heigth height above earth at point
+ * @return {THREE.Vector3}
+ */
+export function latLongToVector3(lat, lon, radius, height = 0) {
+  var phi = (lat)*Math.PI/180
+  var theta = (lon-180)*Math.PI/180
+
+  var x = -(radius+height) * Math.cos(phi) * Math.cos(theta)
+  var y = (radius+height) * Math.sin(phi)
+  var z = -((radius+height) * Math.cos(phi) * Math.sin(theta))
+
+  return new THREE.Vector3(x,y,z)
 }

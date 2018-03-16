@@ -26,7 +26,7 @@ export default class Planet extends Animate {
     this.mesh.rotation.y -= step
   }
 
-  rotateAroundCenter(step, index, r, speed, offset, callback = false) {
+  rotateAroundCenter(step, index, r, speed, offset = 0, callback = false) {
     let xAmp = Math.cos((step * speed) + offset)
     let yAmp = Math.sin(step * speed + offset)
     this.mesh.position.x = r * xAmp

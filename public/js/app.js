@@ -33,25 +33,25 @@ module.exports = Cancel;
 "use strict";
 /* unused harmony export WebGLRenderTargetCube */
 /* unused harmony export WebGLRenderTarget */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return WebGLRenderer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return WebGLRenderer; });
 /* unused harmony export ShaderLib */
 /* unused harmony export UniformsLib */
 /* unused harmony export UniformsUtils */
 /* unused harmony export ShaderChunk */
 /* unused harmony export FogExp2 */
 /* unused harmony export Fog */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return Scene; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return Scene; });
 /* unused harmony export Sprite */
 /* unused harmony export LOD */
 /* unused harmony export SkinnedMesh */
 /* unused harmony export Skeleton */
 /* unused harmony export Bone */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return Mesh; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return Mesh; });
 /* unused harmony export LineSegments */
 /* unused harmony export LineLoop */
-/* unused harmony export Line */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return Line; });
 /* unused harmony export Points */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Group; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return Group; });
 /* unused harmony export VideoTexture */
 /* unused harmony export DataTexture */
 /* unused harmony export CompressedTexture */
@@ -62,7 +62,7 @@ module.exports = Cancel;
 /* unused harmony export CompressedTextureLoader */
 /* unused harmony export DataTextureLoader */
 /* unused harmony export CubeTextureLoader */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return TextureLoader; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return TextureLoader; });
 /* unused harmony export ObjectLoader */
 /* unused harmony export MaterialLoader */
 /* unused harmony export BufferGeometryLoader */
@@ -88,7 +88,7 @@ module.exports = Cancel;
 /* unused harmony export LightShadow */
 /* unused harmony export Light */
 /* unused harmony export StereoCamera */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return PerspectiveCamera; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return PerspectiveCamera; });
 /* unused harmony export OrthographicCamera */
 /* unused harmony export CubeCamera */
 /* unused harmony export ArrayCamera */
@@ -113,7 +113,7 @@ module.exports = Cancel;
 /* unused harmony export AnimationClip */
 /* unused harmony export Uniform */
 /* unused harmony export InstancedBufferGeometry */
-/* unused harmony export BufferGeometry */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BufferGeometry; });
 /* unused harmony export Geometry */
 /* unused harmony export InterleavedBufferAttribute */
 /* unused harmony export InstancedInterleavedBuffer */
@@ -145,10 +145,10 @@ module.exports = Cancel;
 /* unused harmony export Line3 */
 /* unused harmony export Euler */
 /* unused harmony export Vector4 */
-/* unused harmony export Vector3 */
-/* unused harmony export Vector2 */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return Vector3; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return Vector2; });
 /* unused harmony export Quaternion */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Color; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Color; });
 /* unused harmony export ImmediateRenderObject */
 /* unused harmony export VertexNormalsHelper */
 /* unused harmony export SpotLightHelper */
@@ -195,7 +195,7 @@ module.exports = Cancel;
 /* unused harmony export TorusBufferGeometry */
 /* unused harmony export TextGeometry */
 /* unused harmony export TextBufferGeometry */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return SphereGeometry; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return SphereGeometry; });
 /* unused harmony export SphereBufferGeometry */
 /* unused harmony export RingGeometry */
 /* unused harmony export RingBufferGeometry */
@@ -229,9 +229,9 @@ module.exports = Cancel;
 /* unused harmony export MeshLambertMaterial */
 /* unused harmony export MeshDepthMaterial */
 /* unused harmony export MeshDistanceMaterial */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return MeshBasicMaterial; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return MeshBasicMaterial; });
 /* unused harmony export LineDashedMaterial */
-/* unused harmony export LineBasicMaterial */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return LineBasicMaterial; });
 /* unused harmony export Material */
 /* unused harmony export Float64BufferAttribute */
 /* unused harmony export Float32BufferAttribute */
@@ -246,7 +246,7 @@ module.exports = Cancel;
 /* unused harmony export ArcCurve */
 /* unused harmony export CatmullRomCurve3 */
 /* unused harmony export CubicBezierCurve */
-/* unused harmony export CubicBezierCurve3 */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return CubicBezierCurve3; });
 /* unused harmony export EllipseCurve */
 /* unused harmony export LineCurve */
 /* unused harmony export LineCurve3 */
@@ -45969,28 +45969,99 @@ function LensFlare() {
 
 /***/ }),
 
-/***/ 140:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 102:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-__webpack_require__(141);
-module.exports = __webpack_require__(183);
+"use strict";
+/* unused harmony export rand */
+/* unused harmony export degToRad */
+/* unused harmony export radToDeg */
+/* unused harmony export posAtPInRange */
+/* harmony export (immutable) */ __webpack_exports__["b"] = pAtPosInRange;
+/* unused harmony export rN */
+/* harmony export (immutable) */ __webpack_exports__["a"] = latLongToVector3;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three__ = __webpack_require__(101);
 
+
+function rand(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function degToRad(deg) {
+  return deg * Math.PI / 180;
+}
+
+function radToDeg(rad) {
+  return rad * 180 / Math.PI;
+}
+/**
+ * Position At Percentage In Range
+ * @param  {Number} min
+ * @param  {Number} max
+ * @param  {Number} p   Position
+ * @return {Number}     position
+ */
+function posAtPInRange(min, max, p) {
+  return max - (max - min) * (1 - p);
+}
+/**
+ * Percentage at Postition In Range
+ * @param  {Number} min
+ * @param  {Number} max
+ * @param  {Number} p   Percentage
+ * @return {Number}     Percentage between two numbers
+ */
+function pAtPosInRange(min, max, pos) {
+  return (pos - min) / (max - min);
+}
+function rN() {
+  return Math.random() > 0.5 ? -1 : 1;
+}
+/**
+ * [latLongToVector3 description]
+ * @param  {Number} lat
+ * @param  {Number} lon
+ * @param  {Number} radius Earth Radius
+ * @param  {Number} heigth height above earth at point
+ * @return {THREE.Vector3}
+ */
+function latLongToVector3(lat, lon, radius) {
+  var height = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
+
+  var phi = lat * Math.PI / 180;
+  var theta = (lon - 180) * Math.PI / 180;
+
+  var x = -(radius + height) * Math.cos(phi) * Math.cos(theta);
+  var y = (radius + height) * Math.sin(phi);
+  var z = -((radius + height) * Math.cos(phi) * Math.sin(theta));
+
+  return new __WEBPACK_IMPORTED_MODULE_0_three__["n" /* Vector3 */](x, y, z);
+}
 
 /***/ }),
 
 /***/ 141:
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(142);
+module.exports = __webpack_require__(185);
+
+
+/***/ }),
+
+/***/ 142:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bootstrap_js__ = __webpack_require__(142);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bootstrap_js__ = __webpack_require__(143);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bootstrap_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__bootstrap_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_GlobeAnimation_GlobeAnimation_js__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_GlobeAnimation_GlobeAnimation_js__ = __webpack_require__(164);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_dom__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_dom__ = __webpack_require__(170);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__containers_App__ = __webpack_require__(182);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__containers_App__ = __webpack_require__(184);
 
 
 
@@ -46001,7 +46072,7 @@ __WEBPACK_IMPORTED_MODULE_3_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
 
 /***/ }),
 
-/***/ 142:
+/***/ 143:
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -46010,7 +46081,7 @@ __WEBPACK_IMPORTED_MODULE_3_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
 * CSRF token as a header based on the value of the "XSRF" token cookie.
 */
 
-window.axios = __webpack_require__(143);
+window.axios = __webpack_require__(144);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -46030,14 +46101,14 @@ if (token) {
 
 /***/ }),
 
-/***/ 143:
+/***/ 144:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(144);
+module.exports = __webpack_require__(145);
 
 /***/ }),
 
-/***/ 144:
+/***/ 145:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46045,7 +46116,7 @@ module.exports = __webpack_require__(144);
 
 var utils = __webpack_require__(15);
 var bind = __webpack_require__(96);
-var Axios = __webpack_require__(146);
+var Axios = __webpack_require__(147);
 var defaults = __webpack_require__(66);
 
 /**
@@ -46080,14 +46151,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(100);
-axios.CancelToken = __webpack_require__(161);
+axios.CancelToken = __webpack_require__(162);
 axios.isCancel = __webpack_require__(99);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(162);
+axios.spread = __webpack_require__(163);
 
 module.exports = axios;
 
@@ -46097,7 +46168,7 @@ module.exports.default = axios;
 
 /***/ }),
 
-/***/ 145:
+/***/ 146:
 /***/ (function(module, exports) {
 
 /*!
@@ -46125,7 +46196,7 @@ function isSlowBuffer (obj) {
 
 /***/ }),
 
-/***/ 146:
+/***/ 147:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46133,8 +46204,8 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(66);
 var utils = __webpack_require__(15);
-var InterceptorManager = __webpack_require__(156);
-var dispatchRequest = __webpack_require__(157);
+var InterceptorManager = __webpack_require__(157);
+var dispatchRequest = __webpack_require__(158);
 
 /**
  * Create a new instance of Axios
@@ -46212,7 +46283,7 @@ module.exports = Axios;
 
 /***/ }),
 
-/***/ 147:
+/***/ 148:
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -46403,7 +46474,7 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ 148:
+/***/ 149:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46423,40 +46494,6 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 /***/ }),
 
-/***/ 149:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var createError = __webpack_require__(98);
-
-/**
- * Resolve or reject a Promise based on response status.
- *
- * @param {Function} resolve A function that resolves the promise.
- * @param {Function} reject A function that rejects the promise.
- * @param {object} response The response.
- */
-module.exports = function settle(resolve, reject, response) {
-  var validateStatus = response.config.validateStatus;
-  // Note: status is not exposed by XDomainRequest
-  if (!response.status || !validateStatus || validateStatus(response.status)) {
-    resolve(response);
-  } else {
-    reject(createError(
-      'Request failed with status code ' + response.status,
-      response.config,
-      null,
-      response.request,
-      response
-    ));
-  }
-};
-
-
-/***/ }),
-
 /***/ 15:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -46464,7 +46501,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 var bind = __webpack_require__(96);
-var isBuffer = __webpack_require__(145);
+var isBuffer = __webpack_require__(146);
 
 /*global toString:true*/
 
@@ -46774,6 +46811,40 @@ module.exports = {
 "use strict";
 
 
+var createError = __webpack_require__(98);
+
+/**
+ * Resolve or reject a Promise based on response status.
+ *
+ * @param {Function} resolve A function that resolves the promise.
+ * @param {Function} reject A function that rejects the promise.
+ * @param {object} response The response.
+ */
+module.exports = function settle(resolve, reject, response) {
+  var validateStatus = response.config.validateStatus;
+  // Note: status is not exposed by XDomainRequest
+  if (!response.status || !validateStatus || validateStatus(response.status)) {
+    resolve(response);
+  } else {
+    reject(createError(
+      'Request failed with status code ' + response.status,
+      response.config,
+      null,
+      response.request,
+      response
+    ));
+  }
+};
+
+
+/***/ }),
+
+/***/ 151:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 /**
  * Update an Error with the specified config, error code, and response.
  *
@@ -46797,7 +46868,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 /***/ }),
 
-/***/ 151:
+/***/ 152:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46873,7 +46944,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 /***/ }),
 
-/***/ 152:
+/***/ 153:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46934,7 +47005,7 @@ module.exports = function parseHeaders(headers) {
 
 /***/ }),
 
-/***/ 153:
+/***/ 154:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47010,7 +47081,7 @@ module.exports = (
 
 /***/ }),
 
-/***/ 154:
+/***/ 155:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47054,7 +47125,7 @@ module.exports = btoa;
 
 /***/ }),
 
-/***/ 155:
+/***/ 156:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47115,7 +47186,7 @@ module.exports = (
 
 /***/ }),
 
-/***/ 156:
+/***/ 157:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47175,18 +47246,18 @@ module.exports = InterceptorManager;
 
 /***/ }),
 
-/***/ 157:
+/***/ 158:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(15);
-var transformData = __webpack_require__(158);
+var transformData = __webpack_require__(159);
 var isCancel = __webpack_require__(99);
 var defaults = __webpack_require__(66);
-var isAbsoluteURL = __webpack_require__(159);
-var combineURLs = __webpack_require__(160);
+var isAbsoluteURL = __webpack_require__(160);
+var combineURLs = __webpack_require__(161);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -47269,7 +47340,7 @@ module.exports = function dispatchRequest(config) {
 
 /***/ }),
 
-/***/ 158:
+/***/ 159:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47297,7 +47368,7 @@ module.exports = function transformData(data, headers, fns) {
 
 /***/ }),
 
-/***/ 159:
+/***/ 160:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47319,7 +47390,7 @@ module.exports = function isAbsoluteURL(url) {
 
 /***/ }),
 
-/***/ 160:
+/***/ 161:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47341,7 +47412,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 /***/ }),
 
-/***/ 161:
+/***/ 162:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47406,7 +47477,7 @@ module.exports = CancelToken;
 
 /***/ }),
 
-/***/ 162:
+/***/ 163:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47441,18 +47512,18 @@ module.exports = function spread(callback) {
 
 /***/ }),
 
-/***/ 163:
+/***/ 164:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__images_earth_2_jpg__ = __webpack_require__(164);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__images_earth_2_jpg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__images_earth_2_jpg__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_js__ = __webpack_require__(165);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Planet_js__ = __webpack_require__(391);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Planet_js__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FlightPath_js__ = __webpack_require__(394);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_js__ = __webpack_require__(393);
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 
+/*import {degToRad, rand, rN, latLongToVector3} from './utils.js'*/
 
 
 
@@ -47465,46 +47536,25 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
   var htmlContainer = document.getElementById('webgl');
 
-  var CFG = {
-    sh: htmlContainer.offsetHeight,
-    sw: htmlContainer.offsetWidth,
-    screenBckgrndClr: 'rgb(25,25,25)',
-    pixelRatio: window.devicePixelRatio || 1,
-    camera: {
-      view_angle: 20,
-      view_aspect: htmlContainer.offsetWidth / htmlContainer.offsetHeight,
-      view_near: 0.1,
-      view_far: 20000
-    },
-    view_initialpos: [-300, 250, 4000],
-    earthTilt: Math.PI * 23 / 180,
-    earth: {
-      mapImage: __WEBPACK_IMPORTED_MODULE_1__images_earth_2_jpg___default.a,
-      radius: 200,
-      segments: 50,
-      sScale: 0.5
-    },
-    earthRotation: 2 * Math.PI / 2000
-  };
-  var renderer = new __WEBPACK_IMPORTED_MODULE_0_three__["i" /* WebGLRenderer */]();
-  var camera = new (Function.prototype.bind.apply(__WEBPACK_IMPORTED_MODULE_0_three__["e" /* PerspectiveCamera */], [null].concat(_toConsumableArray(Object.values(CFG.camera)))))();
-  var scene = new __WEBPACK_IMPORTED_MODULE_0_three__["f" /* Scene */]();
-  var group = new __WEBPACK_IMPORTED_MODULE_0_three__["b" /* Group */]();
+  var renderer = new __WEBPACK_IMPORTED_MODULE_0_three__["o" /* WebGLRenderer */]();
+  var camera = new (Function.prototype.bind.apply(__WEBPACK_IMPORTED_MODULE_0_three__["i" /* PerspectiveCamera */], [null].concat(_toConsumableArray(Object.values(__WEBPACK_IMPORTED_MODULE_3__config_js__["a" /* default */].camera)))))();
+  var scene = new __WEBPACK_IMPORTED_MODULE_0_three__["j" /* Scene */]();
+  var group = new __WEBPACK_IMPORTED_MODULE_0_three__["d" /* Group */]();
 
   /*
    ***** INITIALIZATION *****
    */
 
   // SET THE SIZE FOR THE RENDERER
-  renderer.setSize(CFG.sw, CFG.sh);
-  renderer.setPixelRatio(CFG.pixelRatio);
+  renderer.setSize(__WEBPACK_IMPORTED_MODULE_3__config_js__["a" /* default */].sw, __WEBPACK_IMPORTED_MODULE_3__config_js__["a" /* default */].sh);
+  renderer.setPixelRatio(__WEBPACK_IMPORTED_MODULE_3__config_js__["a" /* default */].pixelRatio);
 
   // SET THE VIEW CAMERA
-  (_camera$position = camera.position).set.apply(_camera$position, _toConsumableArray(CFG.view_initialpos));
-  camera.rotation.set(0, 0, CFG.earthTilt);
+  (_camera$position = camera.position).set.apply(_camera$position, _toConsumableArray(__WEBPACK_IMPORTED_MODULE_3__config_js__["a" /* default */].view_initialpos));
+  camera.rotation.set(0, 0, __WEBPACK_IMPORTED_MODULE_3__config_js__["a" /* default */].earthTilt);
 
   // SET THE SCENE
-  scene.background = new __WEBPACK_IMPORTED_MODULE_0_three__["a" /* Color */](CFG.screenBckgrndClr);
+  scene.background = new __WEBPACK_IMPORTED_MODULE_0_three__["b" /* Color */](__WEBPACK_IMPORTED_MODULE_3__config_js__["a" /* default */].screenBckgrndClr);
   scene.add(camera);
   scene.add(group);
 
@@ -47523,54 +47573,61 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
    ***** END INITIALIZATION ******
    */
 
-  /*
-   *  MAKE THE PLANETS
-   */
-
-  var Earth = new __WEBPACK_IMPORTED_MODULE_3__Planet_js__["a" /* default */]({
-    radius: CFG.earth.radius,
-    segments: CFG.earth.segments,
-    scale: CFG.earth.sScale,
+  var Earth = new __WEBPACK_IMPORTED_MODULE_1__Planet_js__["a" /* default */]({
+    radius: __WEBPACK_IMPORTED_MODULE_3__config_js__["a" /* default */].earth.radius,
+    segments: __WEBPACK_IMPORTED_MODULE_3__config_js__["a" /* default */].earth.segments,
+    scale: __WEBPACK_IMPORTED_MODULE_3__config_js__["a" /* default */].earth.sScale,
     material: {
       color: 'rgb(150,150,150)', wireframe: true
     }
   }, group);
-  var satellites = [];
-  for (var i = 0; i < 1000; i++) {
-    satellites.push(new __WEBPACK_IMPORTED_MODULE_3__Planet_js__["a" /* default */]({
-      radius: 1,
-      segments: 2,
-      scale: 1,
-      opacityLength: Object(__WEBPACK_IMPORTED_MODULE_2__utils_js__["d" /* rand */])(.01, .003),
-      material: {
-        color: 0xffffff,
-        transparent: true,
-        opacity: 1
-      }
-    }, group));
-  }
+
+  var SeaToOma = new __WEBPACK_IMPORTED_MODULE_2__FlightPath_js__["a" /* default */](new __WEBPACK_IMPORTED_MODULE_0_three__["m" /* Vector2 */](47.6062, 122.3321), new __WEBPACK_IMPORTED_MODULE_0_three__["m" /* Vector2 */](41.2524, 95.9980));
+  var SeaToBangkok = new __WEBPACK_IMPORTED_MODULE_2__FlightPath_js__["a" /* default */](new __WEBPACK_IMPORTED_MODULE_0_three__["m" /* Vector2 */](47.6062, 122.3321), new __WEBPACK_IMPORTED_MODULE_0_three__["m" /* Vector2 */](13.7563, -100.5018));
+  group.add(SeaToOma.path, SeaToBangkok.path);
+
+  // let satellites = []
+  // for (var i = 0; i < 1000; i++){
+  //   satellites.push(new Planet({
+  //     radius: 1,
+  //     segments: 2,
+  //     scale: 1,
+  //     opacityLength: rand(.01, .003),
+  //     material: {
+  //       color: 0xffffff,
+  //       transparent: true,
+  //       opacity: 1
+  //     }
+  //   }, group))
+  // }
 
   var count = 0;
 
   (function update() {
-    group.rotation.y -= CFG.earthRotation; // earth rotation...
+    group.rotation.y -= __WEBPACK_IMPORTED_MODULE_3__config_js__["a" /* default */].earthRotation; // earth rotation...
     Earth.update();
-    satellites.forEach(function (child) {
-      child.update();
-    });
+    // satellites.forEach((child) => {child.update()})
 
     switch (count) {
       case 15:
         Earth.addUpdateHandler(Earth.grow, [.5 / 50], 50);
-        satellites.forEach(function (child) {
-          child.pivotPoint.rotation.x = Object(__WEBPACK_IMPORTED_MODULE_2__utils_js__["d" /* rand */])(Object(__WEBPACK_IMPORTED_MODULE_2__utils_js__["a" /* degToRad */])(-360), Object(__WEBPACK_IMPORTED_MODULE_2__utils_js__["a" /* degToRad */])(360));
-          child.pivotPoint.rotation.y = Object(__WEBPACK_IMPORTED_MODULE_2__utils_js__["d" /* rand */])(Object(__WEBPACK_IMPORTED_MODULE_2__utils_js__["a" /* degToRad */])(-360), Object(__WEBPACK_IMPORTED_MODULE_2__utils_js__["a" /* degToRad */])(360));
-          child.pivotPoint.rotation.z = Object(__WEBPACK_IMPORTED_MODULE_2__utils_js__["d" /* rand */])(Object(__WEBPACK_IMPORTED_MODULE_2__utils_js__["a" /* degToRad */])(-360), Object(__WEBPACK_IMPORTED_MODULE_2__utils_js__["a" /* degToRad */])(360));
-          child.addUpdateHandler(child.rotateAroundCenter, [CFG.earth.radius * 1.02, Object(__WEBPACK_IMPORTED_MODULE_2__utils_js__["d" /* rand */])(.01, .015) * Object(__WEBPACK_IMPORTED_MODULE_2__utils_js__["c" /* rN */])(), Object(__WEBPACK_IMPORTED_MODULE_2__utils_js__["d" /* rand */])(0, 2 * Math.PI)], -1);
-        });
+        // satellite.addUpdateHandler(satellite.rotateAroundCenter, [
+        //   CFG.earth.radius * 1.1,
+        //   0
+        // ])
+        // satellites.forEach((child) => {
+        //   child.pivotPoint.rotation.x = (rand(degToRad(-360), degToRad(360)))
+        //   child.pivotPoint.rotation.y = (rand(degToRad(-360), degToRad(360)))
+        //   child.pivotPoint.rotation.z = (rand(degToRad(-360), degToRad(360)))
+        //   child.addUpdateHandler(child.rotateAroundCenter, [
+        //     CFG.earth.radius * 1.02,
+        //     rand(.01, .015) * rN(),
+        //     rand(0, (2 * Math.PI))
+        //   ], -1)
+        // })
         break;
       case 200:
-        Earth.addTexture(CFG.earth.mapImage);
+        Earth.addTexture(__WEBPACK_IMPORTED_MODULE_3__config_js__["a" /* default */].earth.mapImage);
         break;
       case 300:
         break;
@@ -47584,61 +47641,173 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 /***/ }),
 
-/***/ 164:
+/***/ 165:
 /***/ (function(module, exports) {
 
 module.exports = "/images/earth-2.jpg?05b2d8f1c4e8cee79278421d79c9c555";
 
 /***/ }),
 
-/***/ 165:
+/***/ 166:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["d"] = rand;
-/* harmony export (immutable) */ __webpack_exports__["a"] = degToRad;
-/* unused harmony export radToDeg */
-/* unused harmony export posAtPInRange */
-/* harmony export (immutable) */ __webpack_exports__["b"] = pAtPosInRange;
-/* harmony export (immutable) */ __webpack_exports__["c"] = rN;
-function rand(min, max) {
-  return Math.random() * (max - min) + min;
-}
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Animate_js__ = __webpack_require__(167);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_js__ = __webpack_require__(102);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function degToRad(deg) {
-  return deg * Math.PI / 180;
-}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function radToDeg(rad) {
-  return rad * 180 / Math.PI;
-}
-/**
- * Position At Percentage In Range
- * @param  {Number} min
- * @param  {Number} max
- * @param  {Number} p   Position
- * @return {Number}     position
- */
-function posAtPInRange(min, max, p) {
-  return max - (max - min) * (1 - p);
-}
-/**
- * Percentage at Postition In Range
- * @param  {Number} min
- * @param  {Number} max
- * @param  {Number} p   Percentage
- * @return {Number}     Percentage between two numbers
- */
-function pAtPosInRange(min, max, pos) {
-  return (pos - min) / (max - min);
-}
-function rN() {
-  return Math.random() > 0.5 ? -1 : 1;
-}
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+var Planet = function (_Animate) {
+  _inherits(Planet, _Animate);
+
+  /**
+   * @param {object} cfg  configurations for radius, segments, scale, material
+   * @param {THREE.Group} group optionally add it to the group at instantiation.
+   */
+  function Planet(cfg, group) {
+    _classCallCheck(this, Planet);
+
+    var _this = _possibleConstructorReturn(this, (Planet.__proto__ || Object.getPrototypeOf(Planet)).call(this));
+
+    var radius = cfg.radius,
+        segments = cfg.segments,
+        scale = cfg.scale;
+
+    _this.opacityLength = cfg.opacityLength;
+    _this.material = new __WEBPACK_IMPORTED_MODULE_0_three__["h" /* MeshBasicMaterial */](cfg.material);
+    _this.geometry = new __WEBPACK_IMPORTED_MODULE_0_three__["k" /* SphereGeometry */](radius, segments, segments);
+    _this.pivotPoint = new __WEBPACK_IMPORTED_MODULE_0_three__["d" /* Group */]();
+    _this.mesh = new __WEBPACK_IMPORTED_MODULE_0_three__["g" /* Mesh */](_this.geometry, _this.material);
+    _this.mesh.scale.set(scale, scale, scale);
+    _this.pivotPoint.add(_this.mesh);
+    group && group.add(_this.pivotPoint);
+    _this.animateOpactiyOnRotate = _this.animateOpactiyOnRotate.bind(_this);
+    return _this;
+  }
+
+  _createClass(Planet, [{
+    key: 'rotate',
+    value: function rotate(step) {
+      this.mesh.rotation.y -= step;
+    }
+  }, {
+    key: 'rotateAroundCenter',
+    value: function rotateAroundCenter(step, index, r, speed) {
+      var offset = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
+      var callback = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : false;
+
+      var xAmp = Math.cos(step * speed + offset);
+      var yAmp = Math.sin(step * speed + offset);
+      this.mesh.position.x = r * xAmp;
+      this.mesh.position.z = r * yAmp;
+      if (typeof callback === 'function') callback(xAmp, yAmp, r, speed, offset);
+    }
+  }, {
+    key: 'grow',
+    value: function grow(step, index, growth) {
+      this.mesh.scale.x += growth;
+      this.mesh.scale.y += growth;
+      this.mesh.scale.z += growth;
+    }
+  }, {
+    key: 'animateOpactiyOnRotate',
+    value: function animateOpactiyOnRotate(xAmp) {
+      if (Math.abs(xAmp) >= 1 - this.opacityLength) {
+        this.material.opacity = Object(__WEBPACK_IMPORTED_MODULE_2__utils_js__["b" /* pAtPosInRange */])(1 - this.opacityLength, 1, xAmp);
+        this.material.needsUpdate = true;
+      } else {
+        this.material.opacity = 0;
+      }
+    }
+  }, {
+    key: 'addTexture',
+    value: function addTexture(image) {
+      this.texture = new __WEBPACK_IMPORTED_MODULE_0_three__["l" /* TextureLoader */]().load(image);
+      this.material.setValues({
+        map: this.texture,
+        wireframe: false
+      });
+      this.material.needsUpdate = true;
+    }
+  }]);
+
+  return Planet;
+}(__WEBPACK_IMPORTED_MODULE_1__Animate_js__["a" /* default */]);
+
+/* harmony default export */ __webpack_exports__["a"] = (Planet);
 
 /***/ }),
 
-/***/ 168:
+/***/ 167:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Animate = function () {
+  function Animate() {
+    _classCallCheck(this, Animate);
+
+    this.needsUpdate = [];
+  }
+  /**
+     * [addUpdateHandler description]
+     * @param {Function} callback   function to be called
+     * @param {array}   args       deconstructed as callback args
+     * @param {number}   [length=0] how long to run it for, -1 = infinity
+     */
+
+
+  _createClass(Animate, [{
+    key: "addUpdateHandler",
+    value: function addUpdateHandler(callback) {
+      var _this = this;
+
+      var args = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+      var length = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : -1;
+
+      callback = callback.bind(this);
+      var index = this.needsUpdate.length; //add it as unique to needsUpdate
+      var step = 0;
+
+      this.needsUpdate[index] = function () {
+        callback.apply(undefined, [step, index].concat(_toConsumableArray(args)));
+        if (step === length) _this.needsUpdate.splice(index, 1);
+        step++;
+      };
+    }
+  }, {
+    key: "update",
+    value: function update() {
+      for (var i = 0; i < this.needsUpdate.length; i++) {
+        if (!this.needsUpdate[i]) continue;
+        this.needsUpdate[i]();
+      }
+    }
+  }]);
+
+  return Animate;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Animate);
+
+/***/ }),
+
+/***/ 170:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47678,13 +47847,13 @@ if (false) {
   checkDCE();
   module.exports = require('./cjs/react-dom.production.min.js');
 } else {
-  module.exports = __webpack_require__(169);
+  module.exports = __webpack_require__(171);
 }
 
 
 /***/ }),
 
-/***/ 169:
+/***/ 171:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47708,18 +47877,18 @@ if (true) {
 var React = __webpack_require__(50);
 var invariant = __webpack_require__(67);
 var warning = __webpack_require__(68);
-var ExecutionEnvironment = __webpack_require__(170);
-var _assign = __webpack_require__(102);
+var ExecutionEnvironment = __webpack_require__(172);
+var _assign = __webpack_require__(103);
 var emptyFunction = __webpack_require__(51);
-var EventListener = __webpack_require__(171);
-var getActiveElement = __webpack_require__(172);
-var shallowEqual = __webpack_require__(173);
-var containsNode = __webpack_require__(174);
-var focusNode = __webpack_require__(177);
-var emptyObject = __webpack_require__(103);
-var checkPropTypes = __webpack_require__(104);
-var hyphenateStyleName = __webpack_require__(178);
-var camelizeStyleName = __webpack_require__(180);
+var EventListener = __webpack_require__(173);
+var getActiveElement = __webpack_require__(174);
+var shallowEqual = __webpack_require__(175);
+var containsNode = __webpack_require__(176);
+var focusNode = __webpack_require__(179);
+var emptyObject = __webpack_require__(104);
+var checkPropTypes = __webpack_require__(105);
+var hyphenateStyleName = __webpack_require__(180);
+var camelizeStyleName = __webpack_require__(182);
 
 /**
  * WARNING: DO NOT manually require this module.
@@ -63086,7 +63255,7 @@ module.exports = reactDom;
 
 /***/ }),
 
-/***/ 170:
+/***/ 172:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63126,7 +63295,7 @@ module.exports = ExecutionEnvironment;
 
 /***/ }),
 
-/***/ 171:
+/***/ 173:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63207,7 +63376,7 @@ module.exports = EventListener;
 
 /***/ }),
 
-/***/ 172:
+/***/ 174:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63250,7 +63419,7 @@ module.exports = getActiveElement;
 
 /***/ }),
 
-/***/ 173:
+/***/ 175:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63322,7 +63491,7 @@ module.exports = shallowEqual;
 
 /***/ }),
 
-/***/ 174:
+/***/ 176:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63337,7 +63506,7 @@ module.exports = shallowEqual;
  * 
  */
 
-var isTextNode = __webpack_require__(175);
+var isTextNode = __webpack_require__(177);
 
 /*eslint-disable no-bitwise */
 
@@ -63366,7 +63535,7 @@ module.exports = containsNode;
 
 /***/ }),
 
-/***/ 175:
+/***/ 177:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63381,7 +63550,7 @@ module.exports = containsNode;
  * @typechecks
  */
 
-var isNode = __webpack_require__(176);
+var isNode = __webpack_require__(178);
 
 /**
  * @param {*} object The object to check.
@@ -63395,7 +63564,7 @@ module.exports = isTextNode;
 
 /***/ }),
 
-/***/ 176:
+/***/ 178:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63424,7 +63593,7 @@ module.exports = isNode;
 
 /***/ }),
 
-/***/ 177:
+/***/ 179:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63455,7 +63624,7 @@ module.exports = focusNode;
 
 /***/ }),
 
-/***/ 178:
+/***/ 180:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63470,7 +63639,7 @@ module.exports = focusNode;
 
 
 
-var hyphenate = __webpack_require__(179);
+var hyphenate = __webpack_require__(181);
 
 var msPattern = /^ms-/;
 
@@ -63498,7 +63667,7 @@ module.exports = hyphenateStyleName;
 
 /***/ }),
 
-/***/ 179:
+/***/ 181:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63535,7 +63704,7 @@ module.exports = hyphenate;
 
 /***/ }),
 
-/***/ 180:
+/***/ 182:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63550,7 +63719,7 @@ module.exports = hyphenate;
 
 
 
-var camelize = __webpack_require__(181);
+var camelize = __webpack_require__(183);
 
 var msPattern = /^-ms-/;
 
@@ -63579,7 +63748,7 @@ module.exports = camelizeStyleName;
 
 /***/ }),
 
-/***/ 181:
+/***/ 183:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63615,7 +63784,7 @@ module.exports = camelize;
 
 /***/ }),
 
-/***/ 182:
+/***/ 184:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -63639,168 +63808,107 @@ var App = function App() {
 
 /***/ }),
 
-/***/ 183:
+/***/ 185:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 391:
+/***/ 393:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var htmlContainer = document.getElementById('webgl');
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  sh: htmlContainer.offsetHeight,
+  sw: htmlContainer.offsetWidth,
+  screenBckgrndClr: 'rgb(25,25,25)',
+  pixelRatio: window.devicePixelRatio || 1,
+  camera: {
+    view_angle: 20,
+    view_aspect: htmlContainer.offsetWidth / htmlContainer.offsetHeight,
+    view_near: 0.1,
+    view_far: 20000
+  },
+  view_initialpos: [-300, 250, 4000],
+  earthTilt: Math.PI * 23 / 180,
+  earth: {
+    mapImage: __webpack_require__(165),
+    radius: 200,
+    segments: 50,
+    sScale: 0.5
+  },
+  earthRotation: 2 * Math.PI / 1000
+});
+
+/***/ }),
+
+/***/ 394:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Animate_js__ = __webpack_require__(392);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_js__ = __webpack_require__(165);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-
-var Planet = function (_Animate) {
-  _inherits(Planet, _Animate);
-
-  /**
-   * @param {object} cfg  configurations for radius, segments, scale, material
-   * @param {THREE.Group} group optionally add it to the group at instantiation.
-   */
-  function Planet(cfg, group) {
-    _classCallCheck(this, Planet);
-
-    var _this = _possibleConstructorReturn(this, (Planet.__proto__ || Object.getPrototypeOf(Planet)).call(this));
-
-    var radius = cfg.radius,
-        segments = cfg.segments,
-        scale = cfg.scale;
-
-    _this.opacityLength = cfg.opacityLength;
-    _this.material = new __WEBPACK_IMPORTED_MODULE_0_three__["d" /* MeshBasicMaterial */](cfg.material);
-    _this.geometry = new __WEBPACK_IMPORTED_MODULE_0_three__["g" /* SphereGeometry */](radius, segments, segments);
-    _this.pivotPoint = new __WEBPACK_IMPORTED_MODULE_0_three__["b" /* Group */]();
-    _this.mesh = new __WEBPACK_IMPORTED_MODULE_0_three__["c" /* Mesh */](_this.geometry, _this.material);
-    _this.mesh.scale.set(scale, scale, scale);
-    _this.pivotPoint.add(_this.mesh);
-    group && group.add(_this.pivotPoint);
-    _this.animateOpactiyOnRotate = _this.animateOpactiyOnRotate.bind(_this);
-    return _this;
-  }
-
-  _createClass(Planet, [{
-    key: 'rotate',
-    value: function rotate(step) {
-      this.mesh.rotation.y -= step;
-    }
-  }, {
-    key: 'rotateAroundCenter',
-    value: function rotateAroundCenter(step, index, r, speed, offset) {
-      var callback = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : false;
-
-      var xAmp = Math.cos(step * speed + offset);
-      var yAmp = Math.sin(step * speed + offset);
-      this.mesh.position.x = r * xAmp;
-      this.mesh.position.z = r * yAmp;
-      if (typeof callback === 'function') callback(xAmp, yAmp, r, speed, offset);
-    }
-  }, {
-    key: 'grow',
-    value: function grow(step, index, growth) {
-      this.mesh.scale.x += growth;
-      this.mesh.scale.y += growth;
-      this.mesh.scale.z += growth;
-    }
-  }, {
-    key: 'animateOpactiyOnRotate',
-    value: function animateOpactiyOnRotate(xAmp) {
-      if (Math.abs(xAmp) >= 1 - this.opacityLength) {
-        this.material.opacity = Object(__WEBPACK_IMPORTED_MODULE_2__utils_js__["b" /* pAtPosInRange */])(1 - this.opacityLength, 1, xAmp);
-        this.material.needsUpdate = true;
-      } else {
-        this.material.opacity = 0;
-      }
-    }
-  }, {
-    key: 'addTexture',
-    value: function addTexture(image) {
-      this.texture = new __WEBPACK_IMPORTED_MODULE_0_three__["h" /* TextureLoader */]().load(image);
-      this.material.setValues({
-        map: this.texture,
-        wireframe: false
-      });
-      this.material.needsUpdate = true;
-    }
-  }]);
-
-  return Planet;
-}(__WEBPACK_IMPORTED_MODULE_1__Animate_js__["a" /* default */]);
-
-/* harmony default export */ __webpack_exports__["a"] = (Planet);
-
-/***/ }),
-
-/***/ 392:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_js__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config_js__ = __webpack_require__(393);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Animate = function () {
-  function Animate() {
-    _classCallCheck(this, Animate);
 
-    this.needsUpdate = [];
+
+
+
+/**
+ * Plots an airline path from one point to another
+ * @param  {THREE.Vector2} start
+ * @param  {THREE.Vector2} end
+ * @return {THREE.Line}
+ */
+
+var flightPath = function () {
+  function flightPath(start, end) {
+    _classCallCheck(this, flightPath);
+
+    this.distance = start.distanceTo(end);
+    this.vPath = end.clone().sub(start);
+    this.vPath.normalize();
+    this.bezier = this.latLongBezier([start, this.vPath.clone().multiplyScalar(this.distance * .333).add(start), this.vPath.clone().multiplyScalar(this.distance * .666).add(start), end]);
+    this.bezier = new (Function.prototype.bind.apply(__WEBPACK_IMPORTED_MODULE_0_three__["c" /* CubicBezierCurve3 */], [null].concat(_toConsumableArray(this.bezier))))();
+    this.plotPoints = this.bezier.getPoints(this.distance * __WEBPACK_IMPORTED_MODULE_2__config_js__["a" /* default */].pixelRatio);
+    this.geometry = new __WEBPACK_IMPORTED_MODULE_0_three__["a" /* BufferGeometry */]().setFromPoints(this.plotPoints);
+    this.material = new __WEBPACK_IMPORTED_MODULE_0_three__["f" /* LineBasicMaterial */]({
+      color: 0x00ff00,
+      linewidth: 2
+    });
+    this.path = new __WEBPACK_IMPORTED_MODULE_0_three__["e" /* Line */](this.geometry, this.material);
   }
-  /**
-     * [addUpdateHandler description]
-     * @param {Function} callback   function to be called
-     * @param {array}   args       deconstructed as callback args
-     * @param {number}   [length=0] how long to run it for, -1 = infinity
-     */
 
-
-  _createClass(Animate, [{
-    key: "addUpdateHandler",
-    value: function addUpdateHandler(callback) {
+  _createClass(flightPath, [{
+    key: 'latLongBezier',
+    value: function latLongBezier(points) {
       var _this = this;
 
-      var args = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-      var length = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : -1;
-
-      callback = callback.bind(this);
-      var index = this.needsUpdate.length; //add it as unique to needsUpdate
-      var step = 0;
-
-      this.needsUpdate[index] = function () {
-        callback.apply(undefined, [step, index].concat(_toConsumableArray(args)));
-        if (step === length) _this.needsUpdate.splice(index, 1);
-        step++;
-      };
-    }
-  }, {
-    key: "update",
-    value: function update() {
-      for (var i = 0; i < this.needsUpdate.length; i++) {
-        if (!this.needsUpdate[i]) continue;
-        this.needsUpdate[i]();
-      }
+      return points.map(function (v, i) {
+        console.log(v);
+        var distanceAboveEarth = 2;
+        if (i === 1 || i === 2) {
+          distanceAboveEarth = Object(__WEBPACK_IMPORTED_MODULE_1__utils_js__["b" /* pAtPosInRange */])(0, 200, _this.distance) * 400 + 10;
+        }
+        var vector = Object(__WEBPACK_IMPORTED_MODULE_1__utils_js__["a" /* latLongToVector3 */])(v.x, v.y, __WEBPACK_IMPORTED_MODULE_2__config_js__["a" /* default */].earth.radius, distanceAboveEarth);
+        console.log(vector);
+        return vector;
+      });
     }
   }]);
 
-  return Animate;
+  return flightPath;
 }();
 
-/* harmony default export */ __webpack_exports__["a"] = (Animate);
+/* harmony default export */ __webpack_exports__["a"] = (flightPath);
 
 /***/ }),
 
@@ -63811,7 +63919,7 @@ var Animate = function () {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(15);
-var normalizeHeaderName = __webpack_require__(148);
+var normalizeHeaderName = __webpack_require__(149);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -63901,7 +64009,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(147)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(148)))
 
 /***/ }),
 
@@ -63931,12 +64039,12 @@ module.exports = function bind(fn, thisArg) {
 
 
 var utils = __webpack_require__(15);
-var settle = __webpack_require__(149);
-var buildURL = __webpack_require__(151);
-var parseHeaders = __webpack_require__(152);
-var isURLSameOrigin = __webpack_require__(153);
+var settle = __webpack_require__(150);
+var buildURL = __webpack_require__(152);
+var parseHeaders = __webpack_require__(153);
+var isURLSameOrigin = __webpack_require__(154);
 var createError = __webpack_require__(98);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(154);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(155);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -64033,7 +64141,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(155);
+      var cookies = __webpack_require__(156);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -64118,7 +64226,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(150);
+var enhanceError = __webpack_require__(151);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -64151,4 +64259,4 @@ module.exports = function isCancel(value) {
 
 /***/ })
 
-},[140]);
+},[141]);
