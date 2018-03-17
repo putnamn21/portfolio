@@ -71,7 +71,13 @@ export default (function(){
     new THREE.Vector2(47.6062, 122.3321),
     new THREE.Vector2(13.7563, -100.5018)
   )
-  group.add(SeaToOma.path, SeaToBangkok.path)
+
+  const NyToBuenos = new FlightPath(
+    new THREE.Vector2(40.7128, 74.0060),
+    new THREE.Vector2(-34.6037, 58.3816)
+  )
+
+  group.add(SeaToOma.path, SeaToBangkok.path, NyToBuenos.path)
 
 
   // let satellites = []
